@@ -11,6 +11,8 @@ In order to use this firmware, you will need to flash it into the CC3D board's S
 - (possibly) a few wires, ideally a breadboard, to make the connections
 - blade, prong or other conductive object to bridge the CC3D boot pads
 
+NOTE: SouthQuay3D has a tutorial with pictures detailing a very similar procedure: http://www.southquay3d.com/index.php?route=news/article&news_id=9 . Some of the information there is missing and some is not necessary, though.
+
 Orient the CC3D board so that the F103 chip is facing you, the receiver port is to the left, the output port is to the right, and main poirt and flexi port are downwards. Now the main port's pins are, left-to-right: GND, Power, TX, RX ( http://opwiki.readthedocs.io/en/latest/user_manual/cc3d/cc3d.html#cables-colors-pin-outs ). Connect the GND, TX and RX pins to your FTDI dongle (TX to dongle's RX, RX to dongle's TX), but do not connect Power just yet. Locate the CC3D boot pads - two pads in the top right corner of the board, usually labeled SBL and +3.3V. Using a knife or similar, bridge the two pads and connect the Power pin to your FTDI's +5V pin. If the board blinks its Status LED, you didn't bridge the boot pads properly, unplug the Power and try again. The result should be a board with only the Power LED lit, you can un-bridge the pads at this point. Bridging this way is rather difficult to get right, it might be easier to simply solder the two pads together; they can stay soldered while you flash the firmware; then un-solder once the firmware has been flashed.
 
 Next, fire up the STM firmware flasher tool. In the first page, choose the COM port of your FTDI dongle, leave the other settings as they are (baudrate 115200, parity Even, echo Disabled) and click Next. Immediately the second page of the tool should come up, if not, you didn't bridge the boot pads properly, close the flasher tool, unplug Power and retry. On the flasher's second page, check that it says "target is writable" and "flash size 128 KB", then click Next. On the third page, choose "STM32F1_Med-density_128K" from the dropdown and click Next.
@@ -36,3 +38,5 @@ You can use the CubeMX IDE to modify the project settings, add new pin assignmen
 
 # Acknowledgements
 This project is inspired by @alexeystn's stm32-ppm-usb-adapter ( https://github.com/alexeystn/stm32-ppm-usb-adapter ), which was used as the base for all the user code in the firmware. It has been altered for the CC3D hardware and the code was cleaned up for better understandability. Thanks, Alexey!
+
+Big thanks to southquay3d.com for their "CC3D flashing tutorial", I wouldn't have found out how to flash firmware to the CC3D board without their Betaflight flashing tutorial: http://www.southquay3d.com/index.php?route=news/article&news_id=9
