@@ -1,0 +1,6 @@
+# Build folders:
+.dep/
+build/
+
+# Project support (not needed):
+.mxproject
