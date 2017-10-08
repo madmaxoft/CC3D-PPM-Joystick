@@ -1,5 +1,5 @@
 # CC3D-PPM-Joystick
-Converts the CC3D board into a USB joystick, uses PPM from receiver
+Converts the OpenPilot CC3D board into a USB joystick, uses PPM from receiver
 
 This is an alternative firmware for a CC3D board, that allows the board to function as a PC Joystick. Simply plug the CC3D into a computer's USB port and plug a PPM receiver into the board's **CH1** input, and you have a working wireless joystick.
 
@@ -34,7 +34,7 @@ The makefile for this project should compile out of the box. If your GNU ARM com
 ```make BINPATH=/home/user/tools/gcc-arm-none-eabi-6-2017-q2-update/bin```
 The build process will place the firmware files into the `build` folder
 
-You can use the CubeMX IDE to modify the project settings, add new pin assignments etc., just open the CC3D-PPM-Joystick.ioc file. Note, however, that if you use the IDE to re-generate the project (i.e. regenerate the Makefile or create a project setup for other IDEs), you will need to revert its changes to the Middleware folder - there is one change to the USB HID class driver there that needs to be kept as-is, otherwise the board will appear as a mouse, rather than a joystick (The USH HID descriptor lives in those library files, unfortunately).
+You can use the CubeMX IDE to modify the project settings, add new pin assignments etc., just open the CC3D-PPM-Joystick.ioc file. Note, however, that if you use the IDE to re-generate the project (i.e. regenerate the Makefile or create a project setup for other IDEs), you will need to revert its changes to the Middleware folder - there is one change to the USB HID class driver there that needs to be kept as-is, otherwise the board will appear as a mouse, rather than a joystick (The USB HID descriptor lives in those library files, unfortunately).
 
 # Acknowledgements
 This project is inspired by @alexeystn's stm32-ppm-usb-adapter ( https://github.com/alexeystn/stm32-ppm-usb-adapter ), which was used as the base for all the user code in the firmware. It has been altered for the CC3D hardware and the code was cleaned up for better understandability. Thanks, Alexey!
